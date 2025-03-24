@@ -1,0 +1,1 @@
+export {default as lorem} from "./16cbb82556a9df7fe9b91ce1aef70e55.jpg"

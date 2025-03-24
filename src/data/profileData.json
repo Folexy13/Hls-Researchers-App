@@ -1,0 +1,17 @@
+{
+  "nickname": "JohnDoe",
+  "gender": "Male",
+  "age": 30,
+  "weight": 70,
+  "height": 175,
+  "habits": ["Smoking", "Drinking"],
+  "recreation": ["Sport", "Board/Mind Games", "Dancing"],
+  "lifestyle": ["Skin Care", "Weight Management", "Sleep Management"],
+  "health_complaints": ["Alzheimer", "Arthritis"],
+  "current_medications": ["Medication 1", "Medication 2"],
+  "genetic_history": ["Genetic History 1", "Genetic History 2"],
+  "allergies": ["Drug Allergies", "Food Allergies"],
+  "health_fears": "Heart disease",
+  "drug_form": ["Tablets", "Gummies"],
+  "health_budget": "NGN8000-NGN15000"
+}
