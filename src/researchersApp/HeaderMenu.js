@@ -1,9 +1,11 @@
 import React,{useState, useEffect} from 'react'
 import { TiThMenu } from "react-icons/ti";
+import { Link } from 'react-router-dom';
 
 
 function HeaderMenu() {
   const [showMenu, setShowMenu] = useState(false);
+  
 
   const handleMenuClick = () => {
     setShowMenu(!showMenu);
@@ -47,10 +49,10 @@ function HeaderMenu() {
             {" "}
             Publish blog
           </li>
-          <li className="publish" id="publish_podcast">
+          <Link to="/podcasts" className="publish" id="publish_podcast">
             {" "}
             Publish podcast
-          </li>
+          </Link>
           <li className="logout" id="researcher_logout">
             {" "}
             log out

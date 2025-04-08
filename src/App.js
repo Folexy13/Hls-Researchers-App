@@ -1,47 +1,73 @@
-// import './App.css';
-// import Dashboard from './Dashboard';
-// import Account from './Account';
-// import Benfek from './Benfek';
-// import Publish from './Publish';
+import "./index.css";
+import React, { useState, useEffect } from "react";
+import HeaderMenu from "./researchersApp/HeaderMenu";
+import TabMenu from "./researchersApp/TabMenu";
+import TabContent from "./researchersApp/TabContent";
+import Auth from "./auth";
+import Podcasts from "./podcasts";
+import { Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
-// function App() {
-//   return (
-//     <div className="dashboard">
-//       <Dashboard />
-//       <Account />
-//       <Benfek />
-//       <Publish />
-//     </div>
-//   );
-// }
+function App() {
+  const [toggleContent, setToggleContent] = useState(1);
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const navigate = useNavigate();
 
-// export default App;
-// import './App.css'
-import './index.css'
-import React, {useState} from 'react'
-import HeaderMenu from './researchersApp/HeaderMenu'
-import TabMenu from './researchersApp/TabMenu'
-import TabContent from './researchersApp/TabContent'
+  // Check auth status on component mount
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const token = localStorage.getItem("authToken");
+      setIsLoggedIn(!!token);
+      if (!token) {
+        navigate("/login");
+      }
+    };
+    checkAuthStatus();
+  }, [navigate]);
 
-  function App() {
-    const [toggleContent, setToggleContent] = useState(1)
+  const handleClick = (index) => {
+    setToggleContent(index);
+  };
 
-    const handleClick = (index)=>{
-      setToggleContent(index)
-    }                        
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    setIsLoggedIn(false);
+    navigate("/login");
+  };
+
+  const Home = () => {
+    return (
+      <div className="container">
+        <HeaderMenu onLogout={handleLogout} />
+        <TabMenu onTabClick={handleClick} />
+        <TabContent toggleContent={toggleContent} onTabClick={handleClick} />
+      </div>
+    );
+  };
+
   return (
-    <div className="container">
-      
-      <HeaderMenu />
-      <TabMenu onTabClick = {handleClick}/>
-      <TabContent 
-        toggleContent = {toggleContent}
-        onTabClick = {handleClick}  
-        // toggleIndex = {index}
-      />
-
+    <div className="App">
+      <Routes>
+        <Route
+          path="/"
+          element={isLoggedIn ? <Home /> : <Navigate to="/login" replace />}
+        />
+        <Route
+          path="/login"
+          element={
+            isLoggedIn ? (
+              <Navigate to="/" replace />
+            ) : (
+              <Auth onLoginSuccess={() => setIsLoggedIn(true)} />
+            )
+          }
+        />
+        <Route
+          path="/podcasts"
+          element={isLoggedIn ? <Podcasts /> : <Navigate to="/login" replace />}
+        />
+      </Routes>
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
