@@ -88,7 +88,7 @@ function Auth() {
         localStorage.setItem("authToken",resp.access)
         window.location.href = "/";
       } else {
-        await authAPI.registerUser(
+        const resp = await authAPI.registerUser(
           formData.username,
           formData.password,
           "researcher",
