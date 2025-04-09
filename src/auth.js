@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { User, Lock, Eye, EyeOff } from "lucide-react";
 import { notification } from "antd";
-import { PhoneOutlined, HomeOutlined } from "@ant-design/icons";
 import axios from "axios";
 
 const BASE_URL = "https://hlsnigeria.com.ng";
@@ -68,14 +67,8 @@ function Auth() {
         notification.error({ message: "Passwords do not match" });
         return false;
       }
-      if (!formData.pharmacyName.trim()) {
-        notification.error({ message: "Pharmacy name is required" });
-        return false;
-      }
-      if (!formData.phone.trim()) {
-        notification.error({ message: "Phone number is required" });
-        return false;
-      }
+    
+     
     }
 
     return true;
@@ -90,20 +83,20 @@ function Auth() {
 
     try {
       if (state.isLogin) {
-        await authAPI.loginUser(formData.username, formData.password);
+        const resp = await authAPI.loginUser(formData.username, formData.password);
         notification.success({ message: "Login successful" });
-        window.location.href = "/dashboard";
+        localStorage.setItem("authToken",resp.access)
+        window.location.href = "/";
       } else {
         await authAPI.registerUser(
           formData.username,
           formData.password,
           "researcher",
-          formData.pharmacyName,
-          formData.phone
         );
         notification.success({ 
           message: "Registration successful. Please log in." 
         });
+        localStorage.setItem("authToken",resp.access)
         setState(prev => ({...prev, isLogin: true}));
       }
     } catch (err) {
