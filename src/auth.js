@@ -20,12 +20,10 @@ const authAPI = {
   },
   registerUser: async (username, password, role, pharmacyName, phone) => {
     try {
-      const response = await axios.post(`${BASE_URL}/register`, {
+      const response = await axios.post(`${BASE_URL}/api/auth/register`, {
         username,
         password,
         role,
-        pharmacyName,
-        phone
       });
       return response.data;
     } catch (error) {
@@ -171,36 +169,7 @@ function Auth() {
           </div>
 
           {/* Registration Fields */}
-          {!state.isLogin && (
-            <>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <HomeOutlined className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  value={formData.pharmacyName}
-                  onChange={(e) => handleChange("pharmacyName", e.target.value)}
-                  className="block w-full pl-9 sm:pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Pharmacy Name"
-                  required
-                />
-              </div>
-
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <PhoneOutlined className="h-4 w-4 sm:h-5 sm:w-5 text-gray-400" />
-                </div>
-                <input
-                  type="tel"
-                  value={formData.phone}
-                  onChange={(e) => handleChange("phone", e.target.value)}
-                  className="block w-full pl-9 sm:pl-10 pr-3 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Phone Number"
-                  required
-                />
-              </div>
-            </>
+          
           )}
 
           {/* Password Field */}
