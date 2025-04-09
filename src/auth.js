@@ -9,7 +9,7 @@ const BASE_URL = "https://hlsnigeria.com.ng";
 const authAPI = {
   loginUser: async (username, password) => {
     try {
-      const response = await axios.post(`${BASE_URL}/login`, { 
+      const response = await axios.post(`${BASE_URL}/api/auth/login`, { 
         username, 
         password 
       });
