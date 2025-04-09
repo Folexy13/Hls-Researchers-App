@@ -162,8 +162,7 @@ function Auth() {
           </div>
 
           {/* Registration Fields */}
-          
-          )}
+      
 
           {/* Password Field */}
           <div className="relative">
