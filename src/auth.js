@@ -262,7 +262,7 @@ function Auth() {
           {/* Submit Button */}
           <button
             type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors duration-200 flex items-center justify-center disabled:opacity-70 text-sm sm:text-base"
+            className="w-full bg-green-600 text-white py-2 rounded-lg hover:bg-green-700 transition-colors duration-200 flex items-center justify-center disabled:opacity-70 text-sm sm:text-base"
             disabled={state.loading}
           >
             {state.loading ? (
@@ -302,7 +302,7 @@ function Auth() {
           </p>
           <button
             onClick={toggleAuthMode}
-            className="mt-1 sm:mt-2 text-blue-600 hover:text-blue-800 font-medium text-sm sm:text-base"
+            className="mt-1 sm:mt-2 text-green-600 hover:text-green-800 font-medium text-sm sm:text-base"
           >
             {state.isLogin ? "Create new account" : "Login to existing account"}
           </button>
