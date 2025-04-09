@@ -9,7 +9,7 @@ import {
 } from "@ant-design/icons";
 import { jwtDecode } from "jwt-decode";
 
-const apiBaseUrl = "https://hlsnigeria.com.ng"; 
+const apiBaseUrl = "https://hlsnigeria.com.ng/api"; 
 const api = axios.create({
   baseURL: apiBaseUrl,
   headers: {
