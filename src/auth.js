@@ -17,12 +17,13 @@ const authAPI = {
       throw new Error(error.response?.data?.message || "Login failed");
     }
   },
-  registerUser: async (username, password, role, pharmacyName, phone) => {
+  registerUser: async (username, password, role) => {
+    console.log(role)
     try {
-      const response = await axios.post(`${BASE_URL}/api/auth/register`, {
+      const response = await axios.post(`${BASE_URL}/api/auth/reregister`, {
         username,
         password,
-        role,
+        // role,
       });
       return response.data;
     } catch (error) {
