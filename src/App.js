@@ -30,8 +30,8 @@ function App() {
 
   const handleLogout = () => {
     localStorage.removeItem("authToken");
-    setIsLoggedIn(false);
-    navigate("/login");
+    setIsLoggedIn(false)
+    window.location.replace("/login");
   };
 
   const Home = () => {
